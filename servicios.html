@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubre los servicios de asesoría financiera y simuladores de Grupo Monterra en Tlaxcala.">
+  <meta name="keywords" content="servicios, asesoría financiera, simuladores, inversiones, Tlaxcala, Grupo Monterra">
+  <meta name="author" content="Grupo Monterra">
+  <title>Grupo Monterra - Servicios</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS.js for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Swiper.js for carousel (only for hero section) -->
+  <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .header-fixed {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .header-scrolled {
+      background-color: rgba(10, 25, 47, 0.95);
+      transform: translateY(0);
+    }
+    .swiper-slide {
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .swiper-slide {
+        height: 60vh;
+      }
+    }
+    .service-card, .plan-card, .testimonial-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    }
+    .service-card:hover, .plan-card:hover, .testimonial-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+      opacity: 0.95;
+    }
+    .btn-cta {
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+    .btn-cta:hover {
+      background-color: #b8972f;
+      color: #ffffff;
+      transform: scale(1.1) rotate(2deg);
+    }
+    .popular-pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    }
+    .icon-box {
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .icon-box:hover {
+      transform: scale(1.2) rotate(10deg);
+      color: #b8972f;
+    }
+    .form-input {
+      transition: all 0.3s ease;
+    }
+    .form-input:focus {
+      transform: scale(1.02);
+      box-shadow: 0 0 10px rgba(200, 160, 53, 0.5);
+      border-color: #c8a035;
+    }
+    .form-input::placeholder {
+      color: #a0aec0;
+      opacity: 0.8;
+    }
+    .custom-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23c8a035'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1.5em;
+    }
+    .error-message {
+      display: none;
+    }
+    .error-message.show {
+      display: block;
+    }
+    .btn-cta::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+    .btn-cta:hover::after {
+      width: 200%;
+      height: 200%;
+    }
+    .bg-section {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .bg-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 25, 47, 0.7);
+      z-index: 1;
+    }
+    .bg-section > * {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="header-fixed bg-[#0a192f] text-white py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <div class="flex items-center" data-aos="fade-right" data-aos-duration="800">
+        <img src="img/fondo.jpg" alt="Grupo Monterra Logo" class="h-12 w-auto object-contain">
+      </div>
+      <nav class="space-x-6" data-aos="fade-left" data-aos-duration="800">
+        <a href="index.html" class="hover:text-[#c8a035] transition-colors">Inicio</a>
+        <a href="equipo.html" class="hover:text-[#c8a035] transition-colors">Equipo</a>
+        <a href="servicios.html" class="hover:text-[#c8a035] transition-colors font-bold">Servicios</a>
+        <a href="contactanos.html" class="hover:text-[#c8a035] transition-colors">Contáctanos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="swiper-container bg-section" style="background-image: url('img/inversiones.jpg');">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="bg-black bg-opacity-50 p-8 rounded-lg" data-aos="zoom-in" data-aos-duration="1200">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Nuestros Servicios</h1>
+          <p class="text-lg md:text-xl">Soluciones financieras personalizadas para tu éxito en inversiones y gestión patrimonial.</p>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16 bg-white" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-[#0a192f] text-center mb-8" data-aos="fade-down" data-aos-duration="800">Nuestros Servicios</h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">Perfecto para quienes empiezan desde cero. Aprende a invertir con simuladores accesibles.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="service-card bg-white rounded-lg shadow-lg p-6 text-center" data-aos="fade-right" data-aos-duration="1000">
+          <div class="text-[#c8a035] mb-4 icon-box">
+            <i class="fa fa-2x fa-landmark"></i>
+          </div>
+          <h5 class="text-xl font-bold text-[#0a192f] mb-4">Asesoría Financiera</h5>
+          <p class="text-gray-600">Planes personalizados para individuos y empresas, con acceso a simuladores avanzados y alertas de mercado.</p>
+        </div>
+        <div class="service-card bg-white rounded-lg shadow-lg p-6 text-center" data-aos="fade-left" data-aos-duration="1000">
+          <div class="text-[#c8a035] mb-4 icon-box">
+            <i class="fa fa-2x fa-hand-holding-usd"></i>
+          </div>
+          <h5 class="text-xl font-bold text-[#0a192f] mb-4">Simuladores</h5>
+          <p class="text-gray-600">Modelos de simulación para analizar la rentabilidad de empresas y proyectos de inversión.</p>
+        </div>
+      </div>
+      <div class="text-center mt-8" data-aos="zoom-in" data-aos-duration="800">
+        <a href="#contratar" class="btn-cta inline-block bg-[#c8a035] text-white font-semibold py-3 px-6 rounded-lg">Contratar Servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="py-16 bg-[#c8a035] text-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-white text-center mb-10" data-aos="fade-down" data-aos-duration="800">Testimonios</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="testimonial-card bg-white rounded-lg shadow-lg p-6 text-center" data-aos="zoom-in" data-aos-duration="1000">
+          <p class="text-gray-600 mb-4">Perfecto para quienes empiezan desde cero. Aprende a invertir con talleres y simuladores accesibles.</p>
+          <h5 class="text-xl font-bold text-[#0a192f]">Principiante Financiero</h5>
+        </div>
+        <div class="testimonial-card bg-white rounded-lg shadow-lg p-6 text-center" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+          <p class="text-gray-600 mb-4">Optimiza tu flujo de caja y diversifica riesgos con asesoría personalizada y estrategias de corto plazo.</p>
+          <h5 class="text-xl font-bold text-[#0a192f]">Emprendedor</h5>
+        </div>
+        <div class="testimonial-card bg-white rounded-lg shadow-lg p-6 text-center" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
+          <p class="text-gray-600 mb-4">Gestiona excedentes y planifica finanzas corporativas con paquetes integrales adaptados a tu negocio.</p>
+          <h5 class="text-xl font-bold text-[#0a192f]">Pequeña Empresa</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plans Section -->
+  <section class="py-16 px-4 bg-gradient-to-b from-gray-100 to-gray-200" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-[#0a192f] mb-12" data-aos="fade-down" data-aos-duration="800">Nuestros Planes</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="plan-card bg-white rounded-2xl shadow-lg p-6" data-aos="fade-right" data-aos-duration="1000">
+          <h3 class="text-2xl font-semibold text-[#0a192f] mb-4">Persona Física</h3>
+          <p class="text-sm text-gray-600 mb-2">Asesoría personalizada</p>
+          <p class="text-4xl font-bold text-[#0a192f] mb-4">$430 MXN</p>
+          <p class="text-lg text-gray-600 mb-6">1 hora por sesión</p>
+          <ul class="text-left text-gray-600 mb-6 space-y-3">
+            <li class="flex items-center" data-aos="fade-right" data-aos-delay="100">
+              <svg class="w-5 h-5 text-[#c8a035] mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Atención uno a uno
+            </li>
+            <li class="flex items-center" data-aos="fade-right" data-aos-delay="200">
+              <svg class="w-5 h-5 text-[#c8a035] mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Análisis financiero inicial
+            </li>
+            <li class="flex items-center" data-aos="fade-right" data-aos-delay="300">
+              <svg class="w-5 h-5 text-[#c8a035] mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Plan de acción personalizado
+            </li>
+            <li class="flex items-center" data-aos="fade-right" data-aos-delay="400">
+              <svg class="w-5 h-5 text-[#c8a035] mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Seguimiento vía WhatsApp o correo
+            </li>
+          </ul>
+          <a href="#contratar" class="btn-cta inline-block bg-[#c8a035] text-[#0a192f] font-semibold py-3 px-6 rounded-lg">Agendar sesión</a>
+        </div>
+        <div class="plan-card bg-white rounded-2xl shadow-lg p-6 relative" data-aos="fade-left" data-aos-duration="1000">
+          <div class="absolute top-0 right-0 bg-[#c8a035] text-white text-sm font-semibold px-3 py-1 rounded-bl-lg" data-aos="zoom-in" data-aos-delay="200">⭐ Más contratado</div>
+          <h3 class="text-2xl font-semibold text-[#0a192f] mb-4">Persona Moral</h3>
+          <p class="text-sm text-gray-600 mb-2">Asesoría personalizada</p>
+          <p class="text-4xl font-bold text-[#0a192f] mb-4">$430 MXN</p>
+          <p class="text-lg text-gray-600 mb-6">1 hora por sesión</p>
+          <ul class="text-left text-gray-600 mb-6 space-y-3">
+            <li class="flex items-center" data-aos="fade-left" data-aos-delay="100">
+              <svg class="w-5 h-5 text-[#c8a035] mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Atención uno a uno
+            </li>
+            <li class="flex items-center" data-aos="fade-left" data-aos-delay="200">
+              <svg class="w-5 h-5 text-[#c8a035] mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Análisis financiero inicial
+            </li>
+            <li class="flex items-center" data-aos="fade-left" data-aos-delay="300">
+              <svg class="w-5 h-5 text-[#c8a035] mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Plan de acción personalizado
+            </li>
+            <li class="flex items-center" data-aos="fade-left" data-aos-delay="400">
+              <svg class="w-5 h-5 text-[#c8a035] mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              Seguimiento vía WhatsApp o correo
+            </li>
+          </ul>
+          <a href="#contratar" class="btn-cta inline-block bg-[#c8a035] text-[#0a192f] font-semibold py-3 px-6 rounded-lg popular-pulse">Agendar sesión</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment Section -->
+  <section id="contratar" class="bg-section" style="background-image: url('img/inversiones.jpg');" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container-fluid py-5">
+      <div class="container py-5">
+        <div class="bg-appointment rounded">
+          <div class="row h-100 align-items-center justify-content-center">
+            <div class="col-lg-6 py-5">
+              <div class="rounded p-6 my-5" style="background: rgba(55, 55, 63, 0.8);">
+                <h1 class="text-center text-white text-3xl md:text-4xl font-bold mb-6" data-aos="fade-down" data-aos-duration="800">Contrata Nuestros Planes</h1>
+                <form id="appointmentForm" class="space-y-6">
+                  <div class="form-group">
+                    <label for="name" class="block text-white text-sm font-semibold mb-2">Nombre</label>
+                    <input type="text" id="name" class="form-input w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-[#c8a035] focus:ring-2 focus:ring-[#c8a035] focus:outline-none transition-all duration-300 placeholder-gray-400" placeholder="Ingresa tu nombre" required>
+                    <p class="error-message text-red-400 text-sm mt-1 hidden">Por favor, ingresa un nombre válido.</p>
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
+                    <input type="email" id="email" class="form-input w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-[#c8a035] focus:ring-2 focus:ring-[#c8a035] focus:outline-none transition-all duration-300 placeholder-gray-400" placeholder="Ingresa tu email" required>
+                    <p class="error-message text-red-400 text-sm mt-1 hidden">Por favor, ingresa un email válido.</p>
+                  </div>
+                  <div class="form-group">
+                    <label for="plan" class="block text-white text-sm font-semibold mb-2">Selecciona un Plan</label>
+                    <select id="plan" class="form-input w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:border-[#c8a035] focus:ring-2 focus:ring-[#c8a035] focus:outline-none transition-all duration-300 custom-select" required>
+                      <option value="" selected disabled>Selecciona un plan</option>
+                      <option value="1">Básico</option>
+                      <option value="2">Premium</option>
+                      <option value="3">Empresarial</option>
+                    </select>
+                    <p class="error-message text-red-400 text-sm mt-1 hidden">Por favor, selecciona un plan.</p>
+                  </div>
+                  <div>
+                    <button type="submit" class="btn-cta w-full bg-[#c8a035] text-[#0a192f] font-semibold py-3 px-6 rounded-lg hover:bg-[#b8972f] hover:scale-105 transition-all duration-300">Contratar Ahora</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- Footer -->
+ <footer class="bg-[#0a192f] text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div data-aos="fade-up" data-aos-duration="800">
+          <h1 class="text-3xl font-bold text-[#c8a035] mb-4">Monterra</h1>
+          <p class="text-gray-400">Primera firma de asesoría bursátil en Tlaxcala, regulada por el Artículo 225 de la LMV.</p>
+          <div class="flex space-x-4 mt-4">
+            <a href="https://www.tiktok.com/@monterra_inv?_t=ZS-8yJXGUE5Uk0&_r=1" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/grupomonterrainv" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/monterra_inv?igsh=Z3lmeG1hc3l5eDRh" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          <h4 class="text-xl font-semibold text-[#c8a035] mb-4">Enlaces Populares</h4>
+          <div class="flex flex-col space-y-2">
+            <a href="index.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+            <a href="equipo.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Equipo</a>
+            <a href="servicios.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
+            <a href="contactanos.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+            <a href="#" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Participa</a>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+          <h4 class="text-xl font-semibold text-[#c8a035] mb-4">Fuentes</h4>
+          <div class="flex flex-col space-y-2">
+            <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LMV.pdf" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>LMV</a>
+            <a href="https://www.inegi.org.mx/" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>INEGI</a>
+            <a href="https://www.amib.com.mx/" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>AMIB</a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 text-center" data-aos="fade-up" data-aos-duration="800">
+        <p class="text-gray-400">© 2025 Grupo Monterra. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Initialize AOS
+    AOS.init({
+      once: false,
+      mirror: true
+    });
+
+    // Initialize Swiper for Hero section only
+    const heroSwiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      }
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header-fixed');
+      if (window.scrollY > 50) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    });
+
+    // Form Validation
+    document.getElementById('appointmentForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const plan = document.getElementById('plan');
+      let isValid = true;
+
+      // Reset error messages
+      document.querySelectorAll('.error-message').forEach(msg => msg.classList.remove('show'));
+
+      // Name validation
+      if (!name.value.trim()) {
+        name.nextElementSibling.classList.add('show');
+        isValid = false;
+      }
+
+      // Email validation
+      if (!email.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+        email.nextElementSibling.classList.add('show');
+        isValid = false;
+      }
+
+      // Plan validation
+      if (!plan.value) {
+        plan.nextElementSibling.classList.add('show');
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert('Formulario enviado con éxito!');
+        this.reset();
+      }
+    });
+  </script>
+</body>
+</html>

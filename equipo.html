@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conoce al equipo de Grupo Monterra, expertos en asesoría financiera bursátil en Tlaxcala.">
+  <meta name="keywords" content="equipo, asesoría financiera, inversiones, Tlaxcala, Grupo Monterra">
+  <meta name="author" content="Grupo Monterra">
+  <title>Grupo Monterra - Nuestro Equipo</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS.js for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Swiper.js for carousel -->
+  <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for social icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .header-fixed {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      transition: background-color 0.3s ease;
+    }
+    .header-scrolled {
+      background-color: rgba(10, 25, 47, 0.95);
+    }
+    .swiper-slide {
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .team-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: center;
+    }
+    /* Mobile Navigation */
+    .nav-menu {
+      transition: all 0.3s ease;
+    }
+    .nav-menu.open {
+      transform: translateX(0);
+    }
+    @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 75%;
+        max-width: 300px;
+        background-color: rgba(10, 25, 47, 0.95);
+        transform: translateX(100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+      }
+      .nav-menu a {
+        font-size: 1.5rem;
+        margin: 1rem 0;
+      }
+      .swiper-slide {
+        height: 80vh;
+      }
+      .swiper-slide h1 {
+        font-size: 1.875rem;
+      }
+      .swiper-slide p {
+        font-size: 1rem;
+      }
+      .team-img {
+        height: 200px;
+      }
+    }
+    @media (max-width: 640px) {
+      .swiper-slide h1 {
+        font-size: 1.5rem;
+      }
+      .swiper-slide p {
+        font-size: 0.875rem;
+      }
+      .team-img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="header-fixed bg-[#0a192f] text-white py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img src="img/fondo.jpg" alt="Grupo Monterra Logo" class="h-12 w-auto object-contain" loading="lazy">
+      </div>
+      <!-- Hamburger Menu for Mobile -->
+      <button id="hamburger" class="md:hidden text-white focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <!-- Navigation -->
+      <nav id="nav-menu" class="nav-menu hidden md:flex md:space-x-6">
+        <a href="index.html" class="hover:text-[#c8a035] transition-colors">Inicio</a>
+        <a href="equipo.html" class="hover:text-[#c8a035] transition-colors font-bold">Equipo</a>
+        <a href="servicios.html" class="hover:text-[#c8a035] transition-colors">Servicios</a>
+        <a href="contactanos.html" class="hover:text-[#c8a035] transition-colors">Contáctanos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image: url('img/equipo.jpg');">
+        <div class="bg-black bg-opacity-50 p-4 sm:p-6 md:p-8 rounded-lg" data-aos="fade-up" data-aos-duration="1000">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Nuestro Equipo</h1>
+          <p class="text-base sm:text-lg md:text-xl">Conoce a los expertos detrás de Grupo Monterra, comprometidos con tu éxito financiero.</p>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </section>
+
+  <!-- Team Section: Socios -->
+  <section class="py-16 bg-white" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-bold text-[#0a192f] text-center mb-8">Socios</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Neri Osorio Cortés -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden text-center">
+          <div class="relative">
+            <img src="img/Neri.jpg" alt="Neri Osorio Cortés" class="team-img" loading="lazy">
+            <div class="absolute bottom-0 w-full bg-black bg-opacity-50 py-2">
+              <div class="flex justify-center space-x-4">
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h5 class="text-xl font-bold text-[#0a192f] mb-2">Neri Osorio Cortés</h5>
+          </div>
+        </div>
+        <!-- Isabel Shantell Méndez Pérez -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden text-center">
+          <div class="relative">
+            <img src="img/isabel.jpeg" alt="Isabel Shantell Méndez Pérez" class="team-img" loading="lazy">
+            <div class="absolute bottom-0 w-full bg-black bg-opacity-50 py-2">
+              <div class="flex justify-center space-x-4">
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h5 class="text-xl font-bold text-[#0a192f] mb-2">Isabel Shantell Méndez Pérez</h5>
+          </div>
+        </div>
+        <!-- Cristian Pérez Juárez -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden text-center">
+          <div class="relative">
+            <img src="img/cristian.jpg" alt="Cristian Pérez Juárez" class="team-img" loading="lazy">
+            <div class="absolute bottom-0 w-full bg-black bg-opacity-50 py-2">
+              <div class="flex justify-center space-x-4">
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h5 class="text-xl font-bold text-[#0a192f] mb-2">Cristian Pérez Juárez</h5>
+          </div>
+        </div>
+        <!-- Adrián Israel García Vázquez -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden text-center">
+          <div class="relative">
+            <img src="img/adrian.jpg" alt="Adrián Israel García Vázquez" class="team-img" loading="lazy">
+            <div class="absolute bottom-0 w-full bg-black bg-opacity-50 py-2">
+              <div class="flex justify-center space-x-4">
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white hover:text-[#c8a035]"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h5 class="text-xl font-bold text-[#0a192f] mb-2">Adrián Israel García Vázquez</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section: Equipo de Trabajo -->
+<!-- Team Section: Equipo de Trabajo -->
+<section class="py-12 bg-[#c8a035] text-white" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-10">Nuestro Equipo de Trabajo</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+      <!-- Alma Delia Guarneros López -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden text-center transform hover:scale-105 transition-transform duration-300">
+        <div class="relative">
+          <img src="img/alma.jpg" alt="Alma Delia Guarneros López" class="w-full aspect-[3/4] object-cover object-center rounded-t-xl" loading="lazy">
+          <div class="absolute bottom-0 w-full bg-black bg-opacity-60 py-2">
+            <div class="flex justify-center space-x-4">
+              <a href="#" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 sm:p-6">
+          <h5 class="text-lg md:text-xl font-bold text-[#0a192f] mb-2">Alma Delia Guarneros López</h5>
+          <p class="text-[#c8a035] mb-2 font-semibold">Dirección Estratégica</p>
+          <p class="text-gray-600 text-sm">Define la visión a largo plazo y gestiona alianzas con instituciones financieras.</p>
+        </div>
+      </div>
+      <!-- Daniela Serrano Díaz -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden text-center transform hover:scale-105 transition-transform duration-300">
+        <div class="relative">
+          <img src="img/Dani.jpg" alt="Daniela Serrano Díaz" class="w-full aspect-[3/4] object-cover object-center rounded-t-xl" loading="lazy">
+          <div class="absolute bottom-0 w-full bg-black bg-opacity-60 py-2">
+            <div class="flex justify-center space-x-4">
+              <a href="#" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 sm:p-6">
+          <h5 class="text-lg md:text-xl font-bold text-[#0a192f] mb-2">Daniela Serrano Díaz</h5>
+          <p class="text-[#c8a035] mb-2 font-semibold">Coordinación de Operaciones</p>
+          <p class="text-gray-600 text-sm">Gestiona convenios con cámaras de comercio y supervisa la experiencia del cliente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+ <footer class="bg-[#0a192f] text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div data-aos="fade-up" data-aos-duration="800">
+          <h1 class="text-3xl font-bold text-[#c8a035] mb-4">Monterra</h1>
+          <p class="text-gray-400">Primera firma de asesoría bursátil en Tlaxcala, regulada por el Artículo 225 de la LMV.</p>
+          <div class="flex space-x-4 mt-4">
+            <a href="https://www.tiktok.com/@monterra_inv?_t=ZS-8yJXGUE5Uk0&_r=1" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/grupomonterrainv" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/monterra_inv?igsh=Z3lmeG1hc3l5eDRh" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          <h4 class="text-xl font-semibold text-[#c8a035] mb-4">Enlaces Populares</h4>
+          <div class="flex flex-col space-y-2">
+            <a href="index.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+            <a href="equipo.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Equipo</a>
+            <a href="servicios.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
+            <a href="contactanos.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+            <a href="#" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Participa</a>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+          <h4 class="text-xl font-semibold text-[#c8a035] mb-4">Fuentes</h4>
+          <div class="flex flex-col space-y-2">
+            <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LMV.pdf" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>LMV</a>
+            <a href="https://www.inegi.org.mx/" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>INEGI</a>
+            <a href="https://www.amib.com.mx/" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>AMIB</a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 text-center" data-aos="fade-up" data-aos-duration="800">
+        <p class="text-gray-400">© 2025 Grupo Monterra. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Initialize AOS
+    AOS.init();
+
+    // Initialize Swiper
+    const swiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header-fixed');
+      if (window.scrollY > 50) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+      navMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

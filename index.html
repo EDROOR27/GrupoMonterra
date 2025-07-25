@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Grupo Monterra, la primera firma en Tlaxcala dedicada a la asesoría financiera bursátil para jóvenes, emprendedores y pequeñas empresas.">
+  <meta name="keywords" content="asesoría financiera, inversiones, Tlaxcala, educación financiera, Grupo Monterra">
+  <meta name="author" content="Grupo Monterra">
+  <title>Grupo Monterra - Asesoría Financiera Bursátil en Tlaxcala</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS.js for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Swiper.js for carousel -->
+  <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .header-fixed {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      transition: background-color 0.3s ease;
+    }
+    .header-scrolled {
+      background-color: rgba(10, 25, 47, 0.95);
+    }
+    .swiper-slide {
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .video-section video {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+    }
+    /* Mobile Navigation */
+    .nav-menu {
+      transition: all 0.3s ease;
+    }
+    .nav-menu.open {
+      transform: translateX(0);
+    }
+    @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 75%;
+        max-width: 300px;
+        background-color: rgba(10, 25, 47, 0.95);
+        transform: translateX(100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+      }
+      .nav-menu a {
+        font-size: 1.5rem;
+        margin: 1rem 0;
+      }
+      .swiper-slide {
+        height: 80vh;
+      }
+      .swiper-slide h1 {
+        font-size: 1.875rem;
+      }
+      .swiper-slide p {
+        font-size: 1rem;
+      }
+      .video-section video {
+        max-height: 300px;
+      }
+    }
+    @media (max-width: 640px) {
+      .swiper-slide h1 {
+        font-size: 1.5rem;
+      }
+      .swiper-slide p {
+        font-size: 0.875rem;
+      }
+      .video-section video {
+        max-height: 200px;
+      }
+    }
+    /* Chatbot Styles */
+    .chatbot-toggle {
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+    }
+    .chatbot-window {
+      display: none;
+      flex-direction: column;
+    }
+    .chatbot-messages {
+      max-height: 350px;
+      overflow-y: auto;
+    }
+    .chatbot-message {
+      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+    }
+    .chatbot-message.bot {
+      background-color: #0a192f;
+      color: white;
+      margin-left: 1.5rem;
+    }
+    .chatbot-message.user {
+      background-color: #c8a035;
+      color: white;
+      margin-right: 1.5rem;
+      text-align: right;
+    }
+    .question-list-wrapper {
+      cursor: grab;
+    }
+    .question-list {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .question-item {
+      background-color: #0a192f;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      font-size: 0.875rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .question-item:hover {
+      background-color: #c8a035;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <!-- Header -->
+  <header class="header-fixed bg-[#0a192f] text-white py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img src="img/fondo.jpg" alt="Grupo Monterra Logo" class="h-12 w-auto object-contain" loading="lazy">
+      </div>
+      <!-- Hamburger Menu for Mobile -->
+      <button id="hamburger" class="md:hidden text-white focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <!-- Navigation -->
+      <nav id="nav-menu" class="nav-menu hidden md:flex md:space-x-6">
+        <a href="index.html" class="hover:text-[#c8a035] transition-colors">Inicio</a>
+        <a href="equipo.html" class="hover:text-[#c8a035] transition-colors">Equipo</a>
+        <a href="servicios.html" class="hover:text-[#c8a035] transition-colors">Servicios</a>
+        <a href="contactanos.html" class="hover:text-[#c8a035] transition-colors">Contáctanos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Carousel Section -->
+  <section class="swiper-container">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide" style="background-image: url('img/inversiones2.webp');">
+        <div class="bg-black bg-opacity-50 p-4 sm:p-6 md:p-8 rounded-lg" data-aos="fade-up" data-aos-duration="1000">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Transforma tu Futuro Financiero con Grupo Monterra</h1>
+          <p class="text-base sm:text-lg md:text-xl">Pioneros en Tlaxcala, ofrecemos asesoría bursátil y educación financiera para jóvenes, emprendedores y pequeñas empresas.</p>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="swiper-slide" style="background-image: url('img/inversiones.jpeg');">
+        <div class="bg-black bg-opacity-50 p-4 sm:p-6 md:p-8 rounded-lg" data-aos="fade-up" data-aos-duration="1000">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Grupo Monterra: Tu Socio en Inversión</h1>
+          <p class="text-base sm:text-lg md:text-xl">La primera firma en Tlaxcala especializada en asesoría financiera bursátil para jóvenes y emprendedores.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+  </section>
+
+<!-- Video Section -->
+<section class="video-section py-12 bg-[#0a192f] text-white" data-aos="fade-up" data-aos-duration="1000">
+  <div class="container mx-auto px-4">
+    <video controls class="mx-auto mb-6" loading="lazy">
+      <source src="img/video.mp4" type="video/mp4">
+      Tu navegador no soporta el elemento de video.
+    </video>
+    <video controls class="mx-auto" loading="lazy">
+      <source src="img/video2.mp4" type="video/mp4">
+      Tu navegador no soporta el elemento de video.
+    </video>
+  </div>
+</section>
+  <!-- About Us Section -->
+  <section class="py-16 bg-white" data-aos="fade-right" data-aos-duration="1000">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <!-- Image -->
+      <div class="md:w-1/2">
+        <img src="img/nosotros.jpg" alt="Equipo Grupo Monterra" class="w-full h-auto rounded-lg shadow-lg object-cover" loading="lazy">
+      </div>
+      <!-- Text -->
+      <div class="md:w-1/2 md:pl-8 mt-8 md:mt-0">
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#0a192f] mb-4">Sobre Nosotros</h2>
+        <p class="mb-4 text-sm sm:text-base">Grupo Monterra es la primera firma en Tlaxcala dedicada a la asesoría financiera bursátil, enfocada en jóvenes de 18 a 30 años, emprendedores y pequeñas empresas.</p>
+        <h3 class="text-lg sm:text-xl font-semibold text-[#c8a035] mb-2">Misión</h3>
+        <p class="mb-4 text-sm sm:text-base">Mejorar la salud financiera a través de educación y asesor personalizada, respaldados por el Artículo 225 de la Ley del Mercado de Valores.</p>
+        <h3 class="text-lg sm:text-xl font-semibold text-[#c8a035] mb-2">Enfoque</h3>
+        <p class="text-sm sm:text-base">Combinamos educación financiera, tecnología y asesoría para empoderar a nuestros clientes, ofreciendo soluciones 100% mexicanas que fomentan una cultura de inversión responsable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opportunity in Tlaxcala Section -->
+  <section class="py-16 bg-white" data-aos="zoom-in" data-aos-duration="1000">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-bold text-[#0a192f] text-center mb-8">Oportunidad en Tlaxcala</h2>
+      <div class="text-center">
+        <p class="mb-4 text-sm sm:text-base">Tlaxcala, con 1.34 millones de habitantes y 83% de población urbana, presenta un mercado desatendido para la asesoría bursátil.</p>
+        <h3 class="text-lg sm:text-xl font-semibold text-[#c8a035] mb-2">Contexto Económico</h3>
+        <ul class="list-disc list-inside text-left max-w-2xl mx-auto text-sm sm:text-base">
+          <li>Población: 1,342,977, con 19.9% de 18–29 años.</li>
+          <li>Economía: Manufactura lidera el PIB, con diversificación creciente.</li>
+          <li>PEA: 695,452 personas (62.2% de mayores de 15 años).</li>
+          <li>Demanda Identificada: 11,288 clientes potenciales, 2,961 dispuestos a pagar.</li>
+          <li>65% prefiere asesoría presencial.</li>
+          <li>Público objetivo: 25–39 años, ingresos medios, interés en aprender.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Tlaxcala Section -->
+  <section class="py-16 bg-cover bg-center" style="background-image: url('img/tlaxcala.webp');" data-aos="fade-left" data-aos-duration="1000">
+    <div class="container mx-auto px-4 bg-black bg-opacity-50 py-12 rounded-lg">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white text-center mb-8">¿Por qué Tlaxcala?</h2>
+      <div class="text-white max-w-3xl mx-auto">
+        <p class="mb-4 text-sm sm:text-base">Nuestra investigación muestra una clara necesidad de educación financiera en Tlaxcala:</p>
+        <ul class="list-disc list-inside mb-4 text-sm sm:text-base">
+          <li>78% de los jóvenes no han recibido formación financiera.</li>
+        </ul>
+        <p class="text-sm sm:text-base">Con más de 150,000 jóvenes y 40,000 microempresas, nuestro mercado potencial es significativo. Somos pioneros en ofrecer asesoría bursátil local, abordando una demanda insatisfecha.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unique Value Section -->
+  <section class="py-16 bg-[#c8a035] text-white" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-8">¿Qué nos hace únicos?</h2>
+      <p class="max-w-3xl mx-auto text-sm sm:text-base">A diferencia de competidores indirectos y sustitutos, ofrecemos asesoría personalizada y local, enfocada en las necesidades específicas de Tlaxcala.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#0a192f] text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div data-aos="fade-up" data-aos-duration="800">
+          <h1 class="text-3xl font-bold text-[#c8a035] mb-4">Monterra</h1>
+          <p class="text-gray-400">Primera firma de asesoría bursátil en Tlaxcala, regulada por el Artículo 225 de la LMV.</p>
+          <div class="flex space-x-4 mt-4">
+            <a href="https://www.tiktok.com/@monterra_inv?_t=ZS-8yJXGUE5Uk0&_r=1" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/grupomonterrainv" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/monterra_inv?igsh=Z3lmeG1hc3l5eDRh" class="text-white hover:text-[#c8a035] transform hover:scale-125 transition-transform duration-200"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          <h4 class="text-xl font-semibold text-[#c8a035] mb-4">Enlaces Populares</h4>
+          <div class="flex flex-col space-y-2">
+            <a href="index.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+            <a href="equipo.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Equipo</a>
+            <a href="servicios.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
+            <a href="contactanos.html" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+            <a href="#" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>Participa</a>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+          <h4 class="text-xl font-semibold text-[#c8a035] mb-4">Fuentes</h4>
+          <div class="flex flex-col space-y-2">
+            <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LMV.pdf" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>LMV</a>
+            <a href="https://www.inegi.org.mx/" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>INEGI</a>
+            <a href="https://www.amib.com.mx/" class="text-gray-400 hover:text-[#c8a035] transform hover:translate-x-2 transition-transform duration-200"><i class="fa fa-angle-right mr-2"></i>AMIB</a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 text-center" data-aos="fade-up" data-aos-duration="800">
+        <p class="text-gray-400">© 2025 Grupo Monterra. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot -->
+  <div class="chatbot-toggle fixed bottom-4 right-4 bg-[#c8a035] text-white rounded-full p-3 shadow-lg cursor-pointer z-50 hover:bg-[#a3862b] transition-colors" title="Abrir Chatbot">
+    <i class="fas fa-comment-alt text-xl"></i>
+  </div>
+  <div class="chatbot-window hidden fixed bottom-16 right-4 bg-white text-gray-800 rounded-lg shadow-lg w-80 md:w-96 h-[500px] flex flex-col z-50">
+    <!-- Chatbot Header -->
+    <div class="bg-[#0a192f] text-white rounded-t-lg p-3 flex justify-between items-center">
+      <h3 class="text-lg font-semibold">Chatbot Monterra</h3>
+      <button class="chatbot-close text-white hover:text-[#c8a035]">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <!-- Chatbot Messages -->
+    <div class="chatbot-messages flex-1 p-4 overflow-y-auto"></div>
+    <!-- Question List -->
+    <div class="chatbot-questions bg-gray-100 p-4">
+      <h4 class="text-sm font-semibold text-[#0a192f] mb-2">Preguntas frecuentes</h4>
+      <div class="question-list-wrapper overflow-x-auto whitespace-nowrap">
+        <ul class="question-list flex space-x-2"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Initialize AOS
+    AOS.init();
+
+    // Initialize Swiper
+    const swiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header-fixed');
+      if (window.scrollY > 50) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+      navMenu.classList.toggle('hidden');
+    });
+  </script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>
